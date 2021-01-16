@@ -145,8 +145,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="6gW-gi-7gA">
-                                <rect key="frame" x="10" y="140" width="394" height="616"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="6gW-gi-7gA">
+                                <rect key="frame" x="10" y="109" width="394" height="678"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How much time for each exercise?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPI-5e-7m5">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="183"/>
@@ -159,7 +159,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PIM-qD-9Ls">
-                                        <rect key="frame" x="9.5" y="233" width="375" height="162"/>
+                                        <rect key="frame" x="9.5" y="223" width="375" height="162"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ru-IS-7dA">
                                                 <rect key="frame" x="0.0" y="0.0" width="183" height="162"/>
@@ -177,8 +177,31 @@
                                             </pickerView>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="gsI-Fg-MsJ">
+                                        <rect key="frame" x="99.5" y="425" width="195" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIY-KY-12Q">
+                                                <rect key="frame" x="0.0" y="0.0" width="43.5" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNl-OU-7j0">
+                                                <rect key="frame" x="93.5" y="0.0" width="8" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XK-7m-XMn">
+                                                <rect key="frame" x="151.5" y="0.0" width="43.5" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="PiN-w6-y6z">
-                                        <rect key="frame" x="86.5" y="445" width="221" height="171"/>
+                                        <rect key="frame" x="86.5" y="507" width="221" height="171"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDa-I2-Aez">
                                                 <rect key="frame" x="0.0" y="0.0" width="221" height="90"/>
@@ -222,6 +245,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="3Dh-ne-xct"/>
                     <connections>
+                        <outlet property="MinutePickerView" destination="2Ru-IS-7dA" id="T7x-pj-7qX"/>
+                        <outlet property="SecondsPickerView" destination="dII-Wh-v5L" id="A3N-a8-CTo"/>
+                        <outlet property="minutesOfExerciseLabel" destination="JIY-KY-12Q" id="85f-Cf-4sF"/>
+                        <outlet property="secondsOfExerciseLabel" destination="3XK-7m-XMn" id="JVz-pr-sUK"/>
                         <segue destination="JLG-DE-6D6" kind="show" id="fto-hU-vH4"/>
                     </connections>
                 </viewController>
