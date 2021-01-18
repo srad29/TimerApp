@@ -11,8 +11,23 @@ class OffTimeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        BeginWorkoutButton.layer.cornerRadius=10
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBOutlet weak var BeginWorkoutButton: UIButton!
+    @IBOutlet weak var RecoveryTimeInSecLabel: UILabel!
+    @IBAction func SlideToChangeRecoveryTime(_ sender: UISlider) {
+        let currentValue=(Int(sender.value))*5
+        if currentValue>=60{
+            let min=currentValue/60
+            let sec=currentValue%60
+            RecoveryTimeInSecLabel.text="\(min) min. \(sec) sec."
+        }else{
+            RecoveryTimeInSecLabel.text="\(currentValue) sec."
+        }
+        
     }
     
 

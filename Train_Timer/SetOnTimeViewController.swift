@@ -45,8 +45,8 @@ class SetOnTimeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
             super.viewDidLoad()
             print(secondsList)
-        ContinueToRecoveryTimeButton.layer.cornerRadius = 5
-        BackToSetAmountButton.layer.cornerRadius = 5
+        ContinueToRecoveryTimeButton.layer.cornerRadius = 10
+        BackToSetAmountButton.layer.cornerRadius = 10
         MinutePickerView.delegate=self
         MinutePickerView.dataSource=self
         SecondsPickerView.delegate=self

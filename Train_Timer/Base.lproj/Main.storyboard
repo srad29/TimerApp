@@ -77,7 +77,6 @@
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
-                                                                    <action selector="DecreaseSetButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xdk-l3-Q4L"/>
                                                                     <action selector="Decrease_Set_Amount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pK3-vo-y0T"/>
                                                                 </connections>
                                                             </button>
@@ -130,6 +129,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="moj-kH-X5R"/>
                     <connections>
+                        <outlet property="ContinueToExerciseTimeButton" destination="4dg-RA-ifN" id="62R-4R-mdr"/>
+                        <outlet property="DecreaseSetButton" destination="VGG-If-X3M" id="5Lx-t0-y1E"/>
+                        <outlet property="IncreaseSetButton" destination="40r-QX-SpL" id="51Q-TC-dfF"/>
                         <outlet property="Num_Sets_Text_Field" destination="Xga-wG-I8O" id="hav-09-zIN"/>
                         <segue destination="Ojd-jF-f25" kind="show" id="WpU-nu-eHN"/>
                     </connections>
@@ -267,10 +269,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.25" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-5p-2BA">
-                                <rect key="frame" x="18" y="450" width="347" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="v2f-js-a0A">
+                                <rect key="frame" x="35" y="570" width="348" height="154"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="24" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-5p-2BA">
+                                        <rect key="frame" x="-2" y="0.0" width="352" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="344" id="eri-va-4lg"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="SlideToChangeRecoveryTime:" destination="JLG-DE-6D6" eventType="valueChanged" id="W7V-Mp-jdR"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQY-3S-e2A">
+                                        <rect key="frame" x="0.0" y="64" width="348" height="90"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="TqE-pd-Y32"/>
+                                            <constraint firstAttribute="height" constant="90" id="ljh-qo-vII"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="45"/>
+                                        <state key="normal" title="Start Workout!">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Much Time for Recovery?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQi-ZJ-1ei">
                                 <rect key="frame" x="10" y="155" width="394" height="162"/>
                                 <constraints>
@@ -279,6 +303,16 @@
                                     <constraint firstAttribute="height" constant="162" id="c3p-o7-kzt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="49"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0 sec." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8FD-qK-sPK">
+                                <rect key="frame" x="50" y="412" width="314" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="314" id="eA0-eM-2Fi"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="sJs-QG-wZd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -292,6 +326,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NkS-pS-btk"/>
+                    <connections>
+                        <outlet property="BeginWorkoutButton" destination="fQY-3S-e2A" id="xyw-J4-shW"/>
+                        <outlet property="RecoveryTimeInSecLabel" destination="8FD-qK-sPK" id="nUk-mi-3pF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ixt-Si-43k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
