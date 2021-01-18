@@ -9,16 +9,30 @@ import UIKit
 
 class ArrayCreator{
     static func formArrays(maxNumber: Int, unit: String) ->[String]{
-            var arr:[String]=[]
+            var arr=[String]()
             for num in 0...maxNumber{
                 let int_to_string=String(num)
-                arr[num]=int_to_string+" "+unit
+                arr.append("\(int_to_string) \(unit)")
             }
             return arr
         }
 }
-
+//class ContinueButton:UILabel{
+//    override var text: String? {
+//            didSet {
+//                if let text = text {
+//                    println("Text changed.")
+//                } else {
+//                    println("Text not changed.")
+//                }
+//            }
+//        }
+//}
 class SetOnTimeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    
+    
+    @IBOutlet weak var ContinueToRecoveryTimeButton: UIButton!
+    @IBOutlet weak var BackToSetAmountButton: UIButton!
     
     
     @IBOutlet weak var MinutePickerView: UIPickerView!
@@ -31,11 +45,20 @@ class SetOnTimeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
             super.viewDidLoad()
             print(secondsList)
-        
+        ContinueToRecoveryTimeButton.layer.cornerRadius = 5
+        BackToSetAmountButton.layer.cornerRadius = 5
         MinutePickerView.delegate=self
         MinutePickerView.dataSource=self
         SecondsPickerView.delegate=self
         MinutePickerView.dataSource=self
+        //disables continue button if times are 00:00
+        if (minutesOfExerciseLabel.text=="00" && secondsOfExerciseLabel.text=="00")||(minutesOfExerciseLabel.text==minuteList[0] && secondsOfExerciseLabel.text==secondsList[0]){
+            ContinueToRecoveryTimeButton.isUserInteractionEnabled=false//.isEnabled=false
+            ContinueToRecoveryTimeButton.backgroundColor=UIColor.gray
+        }else{
+            ContinueToRecoveryTimeButton.isUserInteractionEnabled=true//.isEnabled=true
+            ContinueToRecoveryTimeButton.backgroundColor=UIColor.systemGreen
+        }
             // Do any additional setup after loading the view.
         }
     var selectedMins: String? //left dial for minutes
@@ -45,31 +68,56 @@ class SetOnTimeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var secondsList=ArrayCreator.formArrays(maxNumber: 59, unit: "sec")
 
     
+   
     
     
-    func numberOfComponents(in minutePickerView: UIPickerView) -> Int {
-        return 1
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if pickerView==MinutePickerView {
+            return 1
+        }else{
+            return 1
+        }
     }
-    func minutePickerView(_ minutePickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return minuteList.count
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView==MinutePickerView{
+            return minuteList.count
+        }else{
+            return secondsList.count
+        }
+        
     }
-    func minutePickerView(_ minutePickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return minuteList[row]
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView==MinutePickerView{
+            return minuteList[row]
+        }else{
+            return secondsList[row]
+        }
+        
     }
-    func minutePickerView(_ minutePickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        minutesOfExerciseLabel.text=minuteList[row] //create label
-    }
-    func numberOfComponents(in secondsPickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func secondsPickerView(_ secondsPickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return secondsList.count
-    }
-    func secondsPickerView(_ secondsPickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return secondsList[row]
-    }
-    func secondsPickerView(_ secondsPickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        secondsOfExerciseLabel.text=secondsList[row]
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView==MinutePickerView{
+            minutesOfExerciseLabel.text=minuteList[row] //create label
+            if row==0 && secondsOfExerciseLabel.text==secondsList[0]{
+                //disables continue button if times are 00:00
+                    ContinueToRecoveryTimeButton.isUserInteractionEnabled=false//.isEnabled=false
+                    ContinueToRecoveryTimeButton.backgroundColor=UIColor.gray
+               
+            } else{
+                ContinueToRecoveryTimeButton.isUserInteractionEnabled=true//.isEnabled=true
+                ContinueToRecoveryTimeButton.backgroundColor=UIColor.systemGreen
+            }
+        }else{
+            secondsOfExerciseLabel.text=secondsList[row]
+            //disables continue button if times are 00:00
+            if (minutesOfExerciseLabel.text==minuteList[0] && secondsOfExerciseLabel.text==secondsList[0]){
+                ContinueToRecoveryTimeButton.isUserInteractionEnabled=false//.isEnabled=false
+                ContinueToRecoveryTimeButton.backgroundColor=UIColor.gray
+            }else{
+                ContinueToRecoveryTimeButton.isUserInteractionEnabled=true//.isEnabled=true
+                ContinueToRecoveryTimeButton.backgroundColor=UIColor.systemGreen
+            }
+        }
     }
     
     func createPickerView(){
@@ -90,30 +138,7 @@ class SetOnTimeViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        if pickerView == topPickerView
-//            {
-//                return 1
-//            }
-//            else
-//            {
-//                return 1
-//            }
-//    }
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1 // number of session
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return minuteList.count // number of dropdown items
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return minuteList[row] // dropdown item
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    selectedMins = minuteList[row] // selected item
-    textFiled.text = selectedMins
-    }
-    
+
     
     /*
     // MARK: - Navigation
