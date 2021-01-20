@@ -17,6 +17,7 @@
 		4A64775D25A79F8000AB9B30 /* Train_TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64775C25A79F8000AB9B30 /* Train_TimerUITests.swift */; };
 		4A9B3BCB25AE3C200080EDCD /* SetOnTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B3BCA25AE3C200080EDCD /* SetOnTimeViewController.swift */; };
 		4AA1605A25AF6D90000613CD /* OffTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA1605925AF6D90000613CD /* OffTimeViewController.swift */; };
+		4AD0A72625B8ADEC006A7449 /* CountdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD0A72525B8ADEB006A7449 /* CountdownViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		4A64775E25A79F8000AB9B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A9B3BCA25AE3C200080EDCD /* SetOnTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOnTimeViewController.swift; sourceTree = "<group>"; };
 		4AA1605925AF6D90000613CD /* OffTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffTimeViewController.swift; sourceTree = "<group>"; };
+		4AD0A72525B8ADEB006A7449 /* CountdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				4A64774825A79F7F00AB9B30 /* Info.plist */,
 				4A9B3BCA25AE3C200080EDCD /* SetOnTimeViewController.swift */,
 				4AA1605925AF6D90000613CD /* OffTimeViewController.swift */,
+				4AD0A72525B8ADEB006A7449 /* CountdownViewController.swift */,
 			);
 			path = Train_Timer;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD0A72625B8ADEC006A7449 /* CountdownViewController.swift in Sources */,
 				4A64773F25A79F7400AB9B30 /* ViewController.swift in Sources */,
 				4AA1605A25AF6D90000613CD /* OffTimeViewController.swift in Sources */,
 				4A64773B25A79F7400AB9B30 /* AppDelegate.swift in Sources */,
